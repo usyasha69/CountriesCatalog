@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">CountriesCatalog</string>
+    <string name="as_show_regions">show countryModels</string>
+    <string name="as_show_sub_regions">show sub countryModels</string>
+    <string name="as_show_countries">show countryModels</string>
+    <string name="ac_hint_add_filter">Add filter</string>
+    <string name="ac_use_filter">use filter</string>
+</resources>
