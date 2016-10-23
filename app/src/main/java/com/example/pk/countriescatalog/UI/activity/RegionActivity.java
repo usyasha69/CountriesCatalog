@@ -26,7 +26,7 @@ public class RegionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ArrayList<CountryModel> countryModels =
-                getIntent().getParcelableArrayListExtra(SelectionActivity.COUNTRY_MODELS_KEY);
+                getIntent().getParcelableArrayListExtra(SplashScreenActivity.COUNTRY_MODELS_KEY);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(new RegionRVAdapter(this, RegionWorker.foundRegions(countryModels)));

@@ -28,7 +28,7 @@ public class RegionWorker {
         return new ArrayList<>(subRegions);
     }
 
-    public static ArrayList<CountryModel> useFilter(ArrayList<CountryModel> countryModels
+    public static void useFilter(ArrayList<CountryModel> countryModels
             , String filter) {
         ArrayList<CountryModel> filterCountryModels = new ArrayList<>();
 
@@ -40,7 +40,11 @@ public class RegionWorker {
             }
         }
 
-        return filterCountryModels;
+        countryModels.clear();
+
+        for (CountryModel filterCountryModel : filterCountryModels) {
+            countryModels.add(filterCountryModel);
+        }
     }
 
     private static boolean isContainsLanguagesFilter(ArrayList<String> languages, String filter) {

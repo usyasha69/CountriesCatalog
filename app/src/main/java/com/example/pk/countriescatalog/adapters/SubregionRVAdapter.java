@@ -14,11 +14,11 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SubregionRVAdapter extends RecyclerView.Adapter<SubregionRVAdapter.ViewHolder> {
+public class SubRegionRVAdapter extends RecyclerView.Adapter<SubRegionRVAdapter.ViewHolder> {
     private Context context;
     private ArrayList<String> regions;
 
-    public SubregionRVAdapter(Context context, ArrayList<String> regions) {
+    public SubRegionRVAdapter(Context context, ArrayList<String> regions) {
         this.context = context;
         this.regions = regions;
     }

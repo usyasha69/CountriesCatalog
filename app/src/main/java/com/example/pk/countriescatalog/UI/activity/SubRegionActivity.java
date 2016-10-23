@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.pk.countriescatalog.R;
-import com.example.pk.countriescatalog.adapters.SubregionRVAdapter;
+import com.example.pk.countriescatalog.adapters.SubRegionRVAdapter;
 import com.example.pk.countriescatalog.models.CountryModel;
 import com.example.pk.countriescatalog.utils.RegionWorker;
 
@@ -26,9 +26,9 @@ public class SubRegionActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         ArrayList<CountryModel> countryModels =
-                getIntent().getParcelableArrayListExtra(SelectionActivity.COUNTRY_MODELS_KEY);
+                getIntent().getParcelableArrayListExtra(SplashScreenActivity.COUNTRY_MODELS_KEY);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(new SubregionRVAdapter(this, RegionWorker.foundSubRegions(countryModels)));
+        recyclerView.setAdapter(new SubRegionRVAdapter(this, RegionWorker.foundSubRegions(countryModels)));
     }
 }
