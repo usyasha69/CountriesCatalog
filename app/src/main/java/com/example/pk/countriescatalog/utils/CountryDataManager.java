@@ -1,14 +1,19 @@
 package com.example.pk.countriescatalog.utils;
 
 import android.content.Context;
+import android.content.res.AssetManager;
+import android.os.Environment;
 
 import com.example.pk.countriescatalog.models.CountryModel;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 
 public class CountryDataManager {
@@ -85,5 +90,56 @@ public class CountryDataManager {
         }
 
         return countryModels;
+    }
+
+    /**
+     * This method saved country images at assets to SD card.
+     */
+    public void saveCountryImageToSDCard() {
+        AssetManager assetManager = context.getAssets();
+        String[] files = null;
+        try {
+            files = assetManager.list("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        if (files != null) for (String filename : files) {
+            InputStream in = null;
+            OutputStream out = null;
+            try {
+                in = assetManager.open(filename);
+                File sdCard = Environment.getExternalStorageDirectory();
+
+                File outFile = new File(sdCard.getAbsolutePath() + "/CountryImages", filename);
+                out = new FileOutputStream(outFile);
+                copyFile(in, out);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+            finally {
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
+    }
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
     }
 }

@@ -37,6 +37,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 @Override
                 public void success(ArrayList<CountryModel> countryModels, Response response) {
                     countryDataManager.saveData(countryModels);
+                    countryDataManager.saveCountryImageToSDCard();
 
                     SharedPreferences.Editor editor = sharedPreferences.edit();
 
